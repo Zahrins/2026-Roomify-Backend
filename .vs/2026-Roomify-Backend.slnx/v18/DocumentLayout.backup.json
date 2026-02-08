@@ -1,0 +1,122 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{4897B9FC-237A-66EE-E857-EACE7F9BAE8E}|2026-Roomify-Backend\\2026-Roomify-Backend.csproj|c:\\users\\lenovo\\source\\repos\\2026-roomify-backend\\2026-roomify-backend\\controllers\\buildingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4897B9FC-237A-66EE-E857-EACE7F9BAE8E}|2026-Roomify-Backend\\2026-Roomify-Backend.csproj|solutionrelative:2026-roomify-backend\\controllers\\buildingscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4897B9FC-237A-66EE-E857-EACE7F9BAE8E}|2026-Roomify-Backend\\2026-Roomify-Backend.csproj|c:\\users\\lenovo\\source\\repos\\2026-roomify-backend\\2026-roomify-backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{4897B9FC-237A-66EE-E857-EACE7F9BAE8E}|2026-Roomify-Backend\\2026-Roomify-Backend.csproj|solutionrelative:2026-roomify-backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4897B9FC-237A-66EE-E857-EACE7F9BAE8E}|2026-Roomify-Backend\\2026-Roomify-Backend.csproj|c:\\users\\lenovo\\source\\repos\\2026-roomify-backend\\2026-roomify-backend\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4897B9FC-237A-66EE-E857-EACE7F9BAE8E}|2026-Roomify-Backend\\2026-Roomify-Backend.csproj|solutionrelative:2026-roomify-backend\\data\\appdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4897B9FC-237A-66EE-E857-EACE7F9BAE8E}|2026-Roomify-Backend\\2026-Roomify-Backend.csproj|c:\\users\\lenovo\\source\\repos\\2026-roomify-backend\\2026-roomify-backend\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4897B9FC-237A-66EE-E857-EACE7F9BAE8E}|2026-Roomify-Backend\\2026-Roomify-Backend.csproj|solutionrelative:2026-roomify-backend\\models\\room.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4897B9FC-237A-66EE-E857-EACE7F9BAE8E}|2026-Roomify-Backend\\2026-Roomify-Backend.csproj|c:\\users\\lenovo\\source\\repos\\2026-roomify-backend\\2026-roomify-backend\\models\\building.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4897B9FC-237A-66EE-E857-EACE7F9BAE8E}|2026-Roomify-Backend\\2026-Roomify-Backend.csproj|solutionrelative:2026-roomify-backend\\models\\building.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{4897B9FC-237A-66EE-E857-EACE7F9BAE8E}|2026-Roomify-Backend\\2026-Roomify-Backend.csproj|c:\\users\\lenovo\\source\\repos\\2026-roomify-backend\\2026-roomify-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{4897B9FC-237A-66EE-E857-EACE7F9BAE8E}|2026-Roomify-Backend\\2026-Roomify-Backend.csproj|solutionrelative:2026-roomify-backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\2026-Roomify-Backend\\Program.cs",
+              "RelativeDocumentMoniker": "2026-Roomify-Backend\\Program.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\2026-Roomify-Backend\\Program.cs",
+              "RelativeToolTip": "2026-Roomify-Backend\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T07:57:46.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BuildingsController.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\2026-Roomify-Backend\\Controllers\\BuildingsController.cs",
+              "RelativeDocumentMoniker": "2026-Roomify-Backend\\Controllers\\BuildingsController.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\2026-Roomify-Backend\\Controllers\\BuildingsController.cs",
+              "RelativeToolTip": "2026-Roomify-Backend\\Controllers\\BuildingsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T07:54:52.369Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Building.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\2026-Roomify-Backend\\Models\\Building.cs",
+              "RelativeDocumentMoniker": "2026-Roomify-Backend\\Models\\Building.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\2026-Roomify-Backend\\Models\\Building.cs",
+              "RelativeToolTip": "2026-Roomify-Backend\\Models\\Building.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T07:50:23.437Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Room.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\2026-Roomify-Backend\\Models\\Room.cs",
+              "RelativeDocumentMoniker": "2026-Roomify-Backend\\Models\\Room.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\2026-Roomify-Backend\\Models\\Room.cs",
+              "RelativeToolTip": "2026-Roomify-Backend\\Models\\Room.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAArAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T07:49:16.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "AppDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\2026-Roomify-Backend\\Data\\AppDbContext.cs",
+              "RelativeDocumentMoniker": "2026-Roomify-Backend\\Data\\AppDbContext.cs",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\2026-Roomify-Backend\\Data\\AppDbContext.cs",
+              "RelativeToolTip": "2026-Roomify-Backend\\Data\\AppDbContext.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAAwBQAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-08T09:36:12.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\2026-Roomify-Backend\\appsettings.json",
+              "RelativeDocumentMoniker": "2026-Roomify-Backend\\appsettings.json",
+              "ToolTip": "C:\\Users\\LENOVO\\source\\repos\\2026-Roomify-Backend\\2026-Roomify-Backend\\appsettings.json",
+              "RelativeToolTip": "2026-Roomify-Backend\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-08T09:28:26.72Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
