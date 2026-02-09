@@ -42,6 +42,39 @@ namespace _2026_Roomify_Backend.Controllers
         {
             return await _context.Bookings.ToListAsync();
         }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Booking>> GetBookingById(int id)
+        {
+            var booking = await _context.Bookings.FindAsync(id);
+
+            if (booking == null)
+                return NotFound(new { message = "Booking tidak ditemukan" });
+
+            return Ok(booking);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> UpdateBooking(int id, [FromBody] Booking updatedBooking)
+        {
+            var booking = await _context.Bookings.FindAsync(id);
+
+            if (booking == null)
+                return NotFound(new { message = "Booking tidak ditemukan" });
+
+            booking.NamaPeminjam = updatedBooking.NamaPeminjam;
+            booking.NoKontak = updatedBooking.NoKontak;
+            booking.Tanggal = DateTime.SpecifyKind(updatedBooking.Tanggal, DateTimeKind.Utc);
+            booking.JamMulai = updatedBooking.JamMulai;
+            booking.JamSelesai = updatedBooking.JamSelesai;
+            booking.Keperluan = updatedBooking.Keperluan;
+            booking.BuildingId = updatedBooking.BuildingId;
+            booking.RoomId = updatedBooking.RoomId;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Booking berhasil diperbarui!" });
+        }
+
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBooking(int id)
