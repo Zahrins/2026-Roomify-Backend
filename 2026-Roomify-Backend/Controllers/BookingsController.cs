@@ -36,5 +36,23 @@ namespace _2026_Roomify_Backend.Controllers
                 return BadRequest(new { message = ex.InnerException?.Message ?? ex.Message });
             }
         }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Booking>>> GetBookings()
+        {
+            return await _context.Bookings.ToListAsync();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteBooking(int id)
+        {
+            var booking = await _context.Bookings.FindAsync(id);
+            if (booking == null) return NotFound();
+
+            _context.Bookings.Remove(booking);
+            await _context.SaveChangesAsync();
+
+            return Ok(new { message = "Data berhasil dihapus!" });
+        }
     }
 }
