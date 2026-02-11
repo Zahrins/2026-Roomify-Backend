@@ -19,8 +19,8 @@ namespace _2026_Roomify_Backend.Models
 
         [Column("kapasitas")]
         public int Kapasitas { get; set; }
-
-        [Column("building_id")]
         public int BuildingId { get; set; }
+        public Building? Building { get; set; }
+
     }
 }

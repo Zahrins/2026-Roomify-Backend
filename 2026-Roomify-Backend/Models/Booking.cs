@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using static _2026_Roomify_Backend.Models.User;
 
 namespace _2026_Roomify_Backend.Models
 {
@@ -23,5 +24,17 @@ namespace _2026_Roomify_Backend.Models
         public int BuildingId { get; set; }
         [Column("room_id")]
         public int RoomId { get; set; }
+
+        [ForeignKey("RoomId")]
+        public Room? Room { get; set; }
+
+        [ForeignKey("BuildingId")]
+        public Building? Building { get; set; }
+
+        [Column("user_id")]
+        public int UserId { get; set; }
+
+        [ForeignKey("UserId")]
+        public _2026_Roomify_Backend.Models.User? User { get; set; }
     }
 }

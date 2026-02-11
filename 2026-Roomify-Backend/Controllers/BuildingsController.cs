@@ -1,5 +1,6 @@
 ﻿using _2026_Roomify_Backend.Data;
 using _2026_Roomify_Backend.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -16,10 +17,17 @@ namespace _2026_Roomify_Backend.Controllers
             _context = context;
         }
 
+        [HttpPost]
+        [Authorize(Roles = "Admin")] 
+        public IActionResult AddBuilding(Building model)
+        {
+            return Ok("Gedung berhasil ditambah.");
+        }
+
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Building>>> GetBuildings([FromQuery] string tanggal)
         {
-            var buildings = await _context.Gedungs
+            var buildings = await _context.Buildings
                 .Include(b => b.Rooms)
                 .ToListAsync();
 

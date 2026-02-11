@@ -1,6 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using _2026_Roomify_Backend.Data;
+﻿using _2026_Roomify_Backend.Data;
 using _2026_Roomify_Backend.Models;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace _2026_Roomify_Backend.Controllers
@@ -17,6 +18,7 @@ namespace _2026_Roomify_Backend.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> CreateBooking([FromBody] Booking booking)
         {
             try

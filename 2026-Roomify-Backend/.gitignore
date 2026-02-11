@@ -19,3 +19,6 @@ dist/
 # Operating System
 Thumbs.db
 .DS_Store
+
+appsettings.json
+appsettings.Development.json
