@@ -18,13 +18,14 @@ namespace _2026_Roomify_Backend.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")] 
+        [AllowAnonymous]
         public IActionResult AddBuilding(Building model)
         {
             return Ok("Gedung berhasil ditambah.");
         }
 
         [HttpGet]
+        [AllowAnonymous]
         public async Task<ActionResult<IEnumerable<Building>>> GetBuildings([FromQuery] string tanggal)
         {
             var buildings = await _context.Buildings

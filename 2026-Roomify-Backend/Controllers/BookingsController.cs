@@ -18,7 +18,6 @@ namespace _2026_Roomify_Backend.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "User")]
         public async Task<IActionResult> CreateBooking([FromBody] Booking booking)
         {
             try

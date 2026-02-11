@@ -12,8 +12,8 @@ using _2026_Roomify_Backend.Data;
 namespace _2026_Roomify_Backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260211131635_SeedBuildingsAndRooms")]
-    partial class SeedBuildingsAndRooms
+    [Migration("20260211155626_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -137,7 +137,8 @@ namespace _2026_Roomify_Backend.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("BuildingId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("buildingid");
 
                     b.Property<int>("Kapasitas")
                         .HasColumnType("integer")
@@ -329,6 +330,15 @@ namespace _2026_Roomify_Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            PasswordHash = "password123",
+                            Role = "User",
+                            Username = "zahrin"
+                        });
                 });
 
             modelBuilder.Entity("_2026_Roomify_Backend.Models.Booking", b =>

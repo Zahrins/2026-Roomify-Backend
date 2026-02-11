@@ -4,10 +4,12 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace _2026_Roomify_Backend.Migrations
 {
     /// <inheritdoc />
-    public partial class InitDbV1 : Migration
+    public partial class SafeSeeding : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -50,14 +52,14 @@ namespace _2026_Roomify_Backend.Migrations
                     status = table.Column<string>(type: "text", nullable: false),
                     tipe = table.Column<string>(type: "text", nullable: false),
                     kapasitas = table.Column<int>(type: "integer", nullable: false),
-                    BuildingId = table.Column<int>(type: "integer", nullable: false)
+                    buildingid = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_rooms", x => x.id);
                     table.ForeignKey(
-                        name: "FK_rooms_buildings_BuildingId",
-                        column: x => x.BuildingId,
+                        name: "FK_rooms_buildings_buildingid",
+                        column: x => x.buildingid,
                         principalTable: "buildings",
                         principalColumn: "id",
                         onDelete: ReferentialAction.Cascade);
@@ -102,6 +104,44 @@ namespace _2026_Roomify_Backend.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.InsertData(
+                table: "buildings",
+                columns: new[] { "id", "nama" },
+                values: new object[,]
+                {
+                    { 1, "Gedung D4" },
+                    { 2, "Gedung D3" },
+                    { 3, "Gedung SAW" },
+                    { 4, "Gedung Pasca" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "users",
+                columns: new[] { "id", "password_hash", "role", "username" },
+                values: new object[] { 1, "password123", "User", "zahrin" });
+
+            migrationBuilder.InsertData(
+                table: "rooms",
+                columns: new[] { "id", "buildingid", "kapasitas", "nama", "status", "tipe" },
+                values: new object[,]
+                {
+                    { 1, 1, 30, "R.101", "kosong", "Kelas" },
+                    { 2, 1, 20, "R.102", "kosong", "Kelas" },
+                    { 3, 1, 20, "R.103", "kosong", "Kelas" },
+                    { 4, 1, 20, "R.104", "kosong", "Kelas" },
+                    { 5, 1, 20, "Lab.IT", "kosong", "Laboratorium" },
+                    { 6, 2, 20, "R.201", "kosong", "Kelas" },
+                    { 7, 2, 25, "R.202", "kosong", "Kelas" },
+                    { 8, 2, 15, "Lab IoT", "kosong", "Laboratorium" },
+                    { 9, 2, 30, "R.203", "kosong", "Kelas" },
+                    { 10, 3, 40, "Ruang 301", "kosong", "Kelas" },
+                    { 11, 3, 35, "Ruang 302", "kosong", "Kelas" },
+                    { 12, 3, 20, "Lab Multimedia", "kosong", "Laboratorium" },
+                    { 13, 4, 25, "Ruang 401", "kosong", "Kelas" },
+                    { 14, 4, 25, "Ruang 402", "kosong", "Kelas" },
+                    { 15, 4, 15, "Lab Research", "kosong", "Laboratorium" }
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_bookings_building_id",
                 table: "bookings",
@@ -118,9 +158,9 @@ namespace _2026_Roomify_Backend.Migrations
                 column: "user_id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_rooms_BuildingId",
+                name: "IX_rooms_buildingid",
                 table: "rooms",
-                column: "BuildingId");
+                column: "buildingid");
         }
 
         /// <inheritdoc />

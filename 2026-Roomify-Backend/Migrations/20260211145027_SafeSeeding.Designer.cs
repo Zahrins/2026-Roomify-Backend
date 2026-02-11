@@ -12,8 +12,8 @@ using _2026_Roomify_Backend.Data;
 namespace _2026_Roomify_Backend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20260211021014_InitDbV1")]
-    partial class InitDbV1
+    [Migration("20260211145027_SafeSeeding")]
+    partial class SafeSeeding
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -103,6 +103,28 @@ namespace _2026_Roomify_Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("buildings", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Nama = "Gedung D4"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Nama = "Gedung D3"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Nama = "Gedung SAW"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Nama = "Gedung Pasca"
+                        });
                 });
 
             modelBuilder.Entity("_2026_Roomify_Backend.Models.Room", b =>
@@ -115,7 +137,8 @@ namespace _2026_Roomify_Backend.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("BuildingId")
-                        .HasColumnType("integer");
+                        .HasColumnType("integer")
+                        .HasColumnName("buildingid");
 
                     b.Property<int>("Kapasitas")
                         .HasColumnType("integer")
@@ -141,6 +164,143 @@ namespace _2026_Roomify_Backend.Migrations
                     b.HasIndex("BuildingId");
 
                     b.ToTable("rooms", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            BuildingId = 1,
+                            Kapasitas = 30,
+                            Nama = "R.101",
+                            Status = "kosong",
+                            Tipe = "Kelas"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            BuildingId = 1,
+                            Kapasitas = 20,
+                            Nama = "R.102",
+                            Status = "kosong",
+                            Tipe = "Kelas"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            BuildingId = 1,
+                            Kapasitas = 20,
+                            Nama = "R.103",
+                            Status = "kosong",
+                            Tipe = "Kelas"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            BuildingId = 1,
+                            Kapasitas = 20,
+                            Nama = "R.104",
+                            Status = "kosong",
+                            Tipe = "Kelas"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            BuildingId = 1,
+                            Kapasitas = 20,
+                            Nama = "Lab.IT",
+                            Status = "kosong",
+                            Tipe = "Laboratorium"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            BuildingId = 2,
+                            Kapasitas = 20,
+                            Nama = "R.201",
+                            Status = "kosong",
+                            Tipe = "Kelas"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            BuildingId = 2,
+                            Kapasitas = 25,
+                            Nama = "R.202",
+                            Status = "kosong",
+                            Tipe = "Kelas"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            BuildingId = 2,
+                            Kapasitas = 15,
+                            Nama = "Lab IoT",
+                            Status = "kosong",
+                            Tipe = "Laboratorium"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            BuildingId = 2,
+                            Kapasitas = 30,
+                            Nama = "R.203",
+                            Status = "kosong",
+                            Tipe = "Kelas"
+                        },
+                        new
+                        {
+                            Id = 10,
+                            BuildingId = 3,
+                            Kapasitas = 40,
+                            Nama = "Ruang 301",
+                            Status = "kosong",
+                            Tipe = "Kelas"
+                        },
+                        new
+                        {
+                            Id = 11,
+                            BuildingId = 3,
+                            Kapasitas = 35,
+                            Nama = "Ruang 302",
+                            Status = "kosong",
+                            Tipe = "Kelas"
+                        },
+                        new
+                        {
+                            Id = 12,
+                            BuildingId = 3,
+                            Kapasitas = 20,
+                            Nama = "Lab Multimedia",
+                            Status = "kosong",
+                            Tipe = "Laboratorium"
+                        },
+                        new
+                        {
+                            Id = 13,
+                            BuildingId = 4,
+                            Kapasitas = 25,
+                            Nama = "Ruang 401",
+                            Status = "kosong",
+                            Tipe = "Kelas"
+                        },
+                        new
+                        {
+                            Id = 14,
+                            BuildingId = 4,
+                            Kapasitas = 25,
+                            Nama = "Ruang 402",
+                            Status = "kosong",
+                            Tipe = "Kelas"
+                        },
+                        new
+                        {
+                            Id = 15,
+                            BuildingId = 4,
+                            Kapasitas = 15,
+                            Nama = "Lab Research",
+                            Status = "kosong",
+                            Tipe = "Laboratorium"
+                        });
                 });
 
             modelBuilder.Entity("_2026_Roomify_Backend.Models.User", b =>
@@ -170,6 +330,15 @@ namespace _2026_Roomify_Backend.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            PasswordHash = "password123",
+                            Role = "User",
+                            Username = "zahrin"
+                        });
                 });
 
             modelBuilder.Entity("_2026_Roomify_Backend.Models.Booking", b =>

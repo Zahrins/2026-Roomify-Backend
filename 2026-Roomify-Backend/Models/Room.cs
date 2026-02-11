@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace _2026_Roomify_Backend.Models
 {
@@ -19,8 +20,13 @@ namespace _2026_Roomify_Backend.Models
 
         [Column("kapasitas")]
         public int Kapasitas { get; set; }
+
+        [Column("buildingid")] 
         public int BuildingId { get; set; }
+
+        [JsonIgnore]
         public Building? Building { get; set; }
+
 
     }
 }
