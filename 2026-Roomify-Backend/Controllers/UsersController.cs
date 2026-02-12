@@ -21,19 +21,14 @@ namespace _2026_Roomify_Backend.Controllers
             _configuration = configuration;
         }
 
-        // =========================================
-        // REGISTER
-        // =========================================
         [HttpPost("register")]
         public IActionResult Register([FromBody] RegisterDto request)
         {
-            // cek username sudah ada atau belum
             if (_context.Users.Any(u => u.Username == request.Username))
             {
                 return BadRequest(new { message = "Username sudah terdaftar." });
             }
 
-            // hash password
             string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
             var newUser = new User
@@ -49,9 +44,6 @@ namespace _2026_Roomify_Backend.Controllers
             return Ok(new { message = $"Registrasi sebagai {newUser.Role} berhasil!" });
         }
 
-        // =========================================
-        // LOGIN
-        // =========================================
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginDto request)
         {
@@ -62,12 +54,10 @@ namespace _2026_Roomify_Backend.Controllers
                 return BadRequest(new { message = "Username atau password salah." });
             }
 
-            // ambil config JWT
             var jwtSettings = _configuration.GetSection("Jwt");
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
-            // buat claims
             var claims = new[]
             {
                 new Claim(ClaimTypes.Name, user.Username),
@@ -95,14 +85,11 @@ namespace _2026_Roomify_Backend.Controllers
         }
     }
 
-    // =========================================
-    // DTO
-    // =========================================
     public class RegisterDto
     {
         public string Username { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
-        public string? Role { get; set; } // "user" atau "admin"
+        public string? Role { get; set; } 
     }
 
     public class LoginDto

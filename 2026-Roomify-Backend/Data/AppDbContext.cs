@@ -26,39 +26,37 @@ namespace _2026_Roomify_Backend.Data
                 .WithMany(b => b.Rooms)
                 .HasForeignKey(r => r.BuildingId);
 
-            // Seeding Buildings
             var buildings = new[]
             {
-        new Building { Id = 1, Nama = "Gedung D4" },
-        new Building { Id = 2, Nama = "Gedung D3" },
-        new Building { Id = 3, Nama = "Gedung SAW" },
-        new Building { Id = 4, Nama = "Gedung Pasca" }
-    };
+                new Building { Id = 1, Nama = "Gedung D4" },
+                new Building { Id = 2, Nama = "Gedung D3" },
+                new Building { Id = 3, Nama = "Gedung SAW" },
+                new Building { Id = 4, Nama = "Gedung Pasca" }
+            };
 
             modelBuilder.Entity<Building>().HasData(buildings);
 
-            // Seeding Rooms
             var rooms = new[]
             {
-        new Room { Id = 1, Nama = "R.101", Tipe = "Kelas", Kapasitas = 30, Status = "kosong", BuildingId = 1 },
-        new Room { Id = 2, Nama = "R.102", Tipe = "Kelas", Kapasitas = 20, Status = "kosong", BuildingId = 1 },
-        new Room { Id = 3, Nama = "R.103", Tipe = "Kelas", Kapasitas = 20, Status = "kosong", BuildingId = 1 },
-        new Room { Id = 4, Nama = "R.104", Tipe = "Kelas", Kapasitas = 20, Status = "kosong", BuildingId = 1 },
-        new Room { Id = 5, Nama = "Lab.IT", Tipe = "Laboratorium", Kapasitas = 20, Status = "kosong", BuildingId = 1 },
+                new Room { Id = 1, Nama = "R.101", Tipe = "Kelas", Kapasitas = 30, Status = "kosong", BuildingId = 1 },
+                new Room { Id = 2, Nama = "R.102", Tipe = "Kelas", Kapasitas = 20, Status = "kosong", BuildingId = 1 },
+                new Room { Id = 3, Nama = "R.103", Tipe = "Kelas", Kapasitas = 20, Status = "kosong", BuildingId = 1 },
+                new Room { Id = 4, Nama = "R.104", Tipe = "Kelas", Kapasitas = 20, Status = "kosong", BuildingId = 1 },
+                new Room { Id = 5, Nama = "Lab.IT", Tipe = "Laboratorium", Kapasitas = 20, Status = "kosong", BuildingId = 1 },
 
-        new Room { Id = 6, Nama = "R.201", Tipe = "Kelas", Kapasitas = 20, Status = "kosong", BuildingId = 2 },
-        new Room { Id = 7, Nama = "R.202", Tipe = "Kelas", Kapasitas = 25, Status = "kosong", BuildingId = 2 },
-        new Room { Id = 8, Nama = "Lab IoT", Tipe = "Laboratorium", Kapasitas = 15, Status = "kosong", BuildingId = 2 },
-        new Room { Id = 9, Nama = "R.203", Tipe = "Kelas", Kapasitas = 30, Status = "kosong", BuildingId = 2 },
+                new Room { Id = 6, Nama = "R.201", Tipe = "Kelas", Kapasitas = 20, Status = "kosong", BuildingId = 2 },
+                new Room { Id = 7, Nama = "R.202", Tipe = "Kelas", Kapasitas = 25, Status = "kosong", BuildingId = 2 },
+                new Room { Id = 8, Nama = "Lab IoT", Tipe = "Laboratorium", Kapasitas = 15, Status = "kosong", BuildingId = 2 },
+                new Room { Id = 9, Nama = "R.203", Tipe = "Kelas", Kapasitas = 30, Status = "kosong", BuildingId = 2 },
 
-        new Room { Id = 10, Nama = "Ruang 301", Tipe = "Kelas", Kapasitas = 40, Status = "kosong", BuildingId = 3 },
-        new Room { Id = 11, Nama = "Ruang 302", Tipe = "Kelas", Kapasitas = 35, Status = "kosong", BuildingId = 3 },
-        new Room { Id = 12, Nama = "Lab Multimedia", Tipe = "Laboratorium", Kapasitas = 20, Status = "kosong", BuildingId = 3 },
+                new Room { Id = 10, Nama = "Ruang 301", Tipe = "Kelas", Kapasitas = 40, Status = "kosong", BuildingId = 3 },
+                new Room { Id = 11, Nama = "Ruang 302", Tipe = "Kelas", Kapasitas = 35, Status = "kosong", BuildingId = 3 },
+                new Room { Id = 12, Nama = "Lab Multimedia", Tipe = "Laboratorium", Kapasitas = 20, Status = "kosong", BuildingId = 3 },
 
-        new Room { Id = 13, Nama = "Ruang 401", Tipe = "Kelas", Kapasitas = 25, Status = "kosong", BuildingId = 4 },
-        new Room { Id = 14, Nama = "Ruang 402", Tipe = "Kelas", Kapasitas = 25, Status = "kosong", BuildingId = 4 },
-        new Room { Id = 15, Nama = "Lab Research", Tipe = "Laboratorium", Kapasitas = 15, Status = "kosong", BuildingId = 4 }
-    };
+                new Room { Id = 13, Nama = "Ruang 401", Tipe = "Kelas", Kapasitas = 25, Status = "kosong", BuildingId = 4 },
+                new Room { Id = 14, Nama = "Ruang 402", Tipe = "Kelas", Kapasitas = 25, Status = "kosong", BuildingId = 4 },
+                new Room { Id = 15, Nama = "Lab Research", Tipe = "Laboratorium", Kapasitas = 15, Status = "kosong", BuildingId = 4 }
+            };
 
             modelBuilder.Entity<Room>().HasData(rooms);
         }
