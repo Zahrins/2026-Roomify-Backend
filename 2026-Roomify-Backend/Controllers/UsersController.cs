@@ -31,11 +31,18 @@ namespace _2026_Roomify_Backend.Controllers
 
             string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
+            var role = request.Role?.Trim().ToLower();
+
+            if (role != "admin" && role != "user")
+            {
+                role = "user";
+            }
+
             var newUser = new User
             {
                 Username = request.Username,
                 PasswordHash = passwordHash,
-                Role = string.IsNullOrEmpty(request.Role) ? "user" : request.Role.ToLower()
+                Role = role
             };
 
             _context.Users.Add(newUser);

@@ -17,26 +17,34 @@ namespace _2026_Roomify_Backend.Controllers
             _context = context;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> CreateBooking([FromBody] Booking booking)
         {
+            Console.WriteLine("AUTH HEADER: " + Request.Headers["Authorization"]);
+
             try
             {
+                var userIdClaim = User.FindFirst("userId")?.Value;
+
+                if (userIdClaim == null)
+                    return Unauthorized(new { message = "User tidak valid" });
+
+                booking.UserId = int.Parse(userIdClaim);
+
                 booking.Tanggal = DateTime.SpecifyKind(booking.Tanggal, DateTimeKind.Utc);
 
                 _context.Bookings.Add(booking);
-
                 await _context.SaveChangesAsync();
 
                 return Ok(new { message = "Booking berhasil disimpan!" });
             }
             catch (Exception ex)
             {
-                Console.WriteLine("ERROR DATABASE: " + (ex.InnerException?.Message ?? ex.Message));
-
                 return BadRequest(new { message = ex.InnerException?.Message ?? ex.Message });
             }
         }
+
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Booking>>> GetBookings()
@@ -71,11 +79,21 @@ namespace _2026_Roomify_Backend.Controllers
             booking.BuildingId = updatedBooking.BuildingId;
             booking.RoomId = updatedBooking.RoomId;
 
-            await _context.SaveChangesAsync();
+            var buildingExists = await _context.Buildings
+        .AnyAsync(b => b.Id == updatedBooking.BuildingId);
 
-            return Ok(new { message = "Booking berhasil diperbarui!" });
-        }
+                var roomExists = await _context.Rooms
+                    .AnyAsync(r => r.Id == updatedBooking.RoomId);
 
+                if (!buildingExists || !roomExists)
+                {
+                    return BadRequest(new { message = "Building atau Room tidak valid." });
+                }
+
+                await _context.SaveChangesAsync();
+
+                return Ok(new { message = "Booking berhasil diperbarui!" });
+            }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteBooking(int id)
