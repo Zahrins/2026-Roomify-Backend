@@ -39,7 +39,6 @@ namespace _2026_Roomify_Backend.Models
         [JsonIgnore]
         public virtual Building? Building { get; set; }
 
-        [JsonIgnore]
         public virtual Room? Room { get; set; }
 
         [JsonIgnore]

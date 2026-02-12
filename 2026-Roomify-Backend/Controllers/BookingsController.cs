@@ -49,12 +49,18 @@ namespace _2026_Roomify_Backend.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Booking>>> GetBookings()
         {
-            return await _context.Bookings.ToListAsync();
+            var bookings = await _context.Bookings
+            .Include(b => b.Room) 
+            .ToListAsync();
+
+            return Ok(bookings);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<Booking>> GetBookingById(int id)
         {
-            var booking = await _context.Bookings.FindAsync(id);
+            var booking = await _context.Bookings
+            .Include(b => b.Room) 
+            .FirstOrDefaultAsync(b => b.Id == id);
 
             if (booking == null)
                 return NotFound(new { message = "Booking tidak ditemukan" });
