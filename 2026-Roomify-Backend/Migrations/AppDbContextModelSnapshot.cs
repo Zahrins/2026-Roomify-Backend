@@ -368,7 +368,7 @@ namespace _2026_Roomify_Backend.Migrations
                         {
                             Id = 1,
                             PasswordHash = "password123",
-                            Role = "User",
+                            Role = "user",
                             Username = "zahrin"
                         });
                 });

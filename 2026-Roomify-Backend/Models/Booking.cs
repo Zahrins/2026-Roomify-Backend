@@ -15,7 +15,7 @@ namespace _2026_Roomify_Backend.Models
         [Column("no_kontak")]
         public string NoKontak { get; set; } = string.Empty;
 
-        [Column("tanggal")]
+        [Column("tanggal", TypeName = "date")]
         public DateTime Tanggal { get; set; }
 
         [Column("jam_mulai")]
@@ -41,7 +41,6 @@ namespace _2026_Roomify_Backend.Models
 
         [JsonIgnore]
         public virtual Building? Building { get; set; }
-        
         public virtual Room? Room { get; set; }
         [JsonIgnore]
         public virtual User? User { get; set; }

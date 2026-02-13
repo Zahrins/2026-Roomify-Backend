@@ -46,12 +46,10 @@ namespace _2026_Roomify_Backend.Controllers
             }
         }
 
-
         [HttpGet]
-        [Authorize] // Wajib Login
-        public async Task<ActionResult<IEnumerable<Booking>>> GetBookings()
+        [Authorize] 
+        public async Task<ActionResult<IEnumerable<Booking>>> GetBookings([FromQuery] string tanggal)
         {
-            // 1. Ambil ID User dari Token (dikirim otomatis oleh Frontend lewat Header Authorization)
             var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value?.ToLower();
 
@@ -62,17 +60,13 @@ namespace _2026_Roomify_Backend.Controllers
 
             int userId = int.Parse(userIdClaim);
 
-            // 2. Siapkan Query Dasar (Include Room supaya tau nama ruangannya)
             var query = _context.Bookings.Include(b => b.Room).AsQueryable();
 
-            // 3. LOGIKA FILTER: 
-            // Jika role-nya BUKAN admin, maka kita filter datanya berdasarkan UserId
             if (userRole != "admin")
             {
                 query = query.Where(b => b.UserId == userId);
             }
 
-            // 4. Eksekusi Query
             var bookings = await query.ToListAsync();
 
             return Ok(bookings);
@@ -82,7 +76,6 @@ namespace _2026_Roomify_Backend.Controllers
         [Authorize]
         public async Task<ActionResult<Booking>> GetBooking(int id)
         {
-            // 1. Cari data booking beserta relasi Room-nya
             var booking = await _context.Bookings
                 .Include(b => b.Room)
                 .FirstOrDefaultAsync(b => b.Id == id);
@@ -92,11 +85,9 @@ namespace _2026_Roomify_Backend.Controllers
                 return NotFound(new { message = "Booking tidak ditemukan" });
             }
 
-            // 2. Ambil ID dan Role dari Token
             var currentUserId = GetCurrentUserId();
             var userRole = User.FindFirst(ClaimTypes.Role)?.Value?.ToLower();
 
-            // 3. VALIDASI: Jika bukan admin DAN bukan pemilik booking, dilarang melihat (403 Forbid)
             if (userRole != "admin" && booking.UserId != currentUserId)
             {
                 return Forbid();
@@ -114,17 +105,16 @@ namespace _2026_Roomify_Backend.Controllers
 
             var currentUserId = GetCurrentUserId();
 
-            // Log untuk melihat perbandingan ID di terminal/console
             Console.WriteLine($"DEBUG: ID di Database: {booking.UserId} | ID dari Token: {currentUserId}");
 
             if (booking.UserId != currentUserId)
             {
-                return Forbid(); // Jika ini jalan, berarti angka di DB vs Token beda
+                return Forbid(); 
             }
 
             booking.NamaPeminjam = dto.NamaPeminjam;
             booking.NoKontak = dto.NoKontak;
-            booking.Tanggal = DateTime.SpecifyKind(dto.Tanggal, DateTimeKind.Utc); // Tambahkan UTC
+            booking.Tanggal = DateTime.SpecifyKind(dto.Tanggal, DateTimeKind.Utc); 
             booking.JamMulai = dto.JamMulai;
             booking.JamSelesai = dto.JamSelesai;
             booking.Keperluan = dto.Keperluan;
@@ -161,7 +151,6 @@ namespace _2026_Roomify_Backend.Controllers
             return Ok(new { message = "Status berhasil diupdate oleh admin." });
         }
 
-        // GET history status
         [HttpGet("{id}/history")]
         public async Task<ActionResult<List<BookingStatusHistory>>> GetBookingHistory(int id)
         {
@@ -175,12 +164,10 @@ namespace _2026_Roomify_Backend.Controllers
 
         private int GetCurrentUserId()
         {
-            // Mengambil langsung dari type "userId" sesuai hasil debug kamu
             var userIdClaim = User.FindFirst("userId")?.Value;
 
             if (string.IsNullOrEmpty(userIdClaim))
             {
-                // Cadangan jika "userId" hilang, pakai NameIdentifier
                 userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             }
 
@@ -198,14 +185,6 @@ namespace _2026_Roomify_Backend.Controllers
 
             return Ok(new { message = "Data berhasil dihapus!" });
         }
-
-        [HttpGet("debug")]
-        [Authorize]
-        public IActionResult Debug()
-        {
-            return Ok(User.Claims.Select(c => new { c.Type, c.Value }));
-        }
-
 
         public class UpdateBookingUserDto
         {
