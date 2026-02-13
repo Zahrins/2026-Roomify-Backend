@@ -11,6 +11,7 @@ namespace _2026_Roomify_Backend.Data
         public DbSet<Building> Buildings { get; set; }
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Booking> Bookings { get; set; }
+        public DbSet<BookingStatusHistory> BookingStatusHistories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -25,6 +26,18 @@ namespace _2026_Roomify_Backend.Data
                 .HasOne(r => r.Building)
                 .WithMany(b => b.Rooms)
                 .HasForeignKey(r => r.BuildingId);
+
+            modelBuilder.Entity<BookingStatusHistory>()
+                .HasOne(h => h.Booking)
+                .WithMany()
+                .HasForeignKey(h => h.BookingId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<BookingStatusHistory>()
+                .HasOne(h => h.ChangedBy)
+                .WithMany()
+                .HasForeignKey(h => h.ChangedByUserId)
+                .OnDelete(DeleteBehavior.SetNull);
 
             var buildings = new[]
             {

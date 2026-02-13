@@ -15,6 +15,6 @@ namespace _2026_Roomify_Backend.Models
             public string PasswordHash { get; set; } = string.Empty;
 
             [Column("role")]
-            public string Role { get; set; } = "User"; 
+            public string Role { get; set; } = "user"; 
         }
 }

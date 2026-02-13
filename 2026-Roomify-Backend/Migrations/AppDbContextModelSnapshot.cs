@@ -64,6 +64,11 @@ namespace _2026_Roomify_Backend.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("room_id");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text")
+                        .HasColumnName("status");
+
                     b.Property<DateTime>("Tanggal")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("tanggal");
@@ -81,6 +86,36 @@ namespace _2026_Roomify_Backend.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("bookings");
+                });
+
+            modelBuilder.Entity("_2026_Roomify_Backend.Models.BookingStatusHistory", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BookingId")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime>("ChangedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<int?>("ChangedByUserId")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BookingId");
+
+                    b.HasIndex("ChangedByUserId");
+
+                    b.ToTable("BookingStatusHistories");
                 });
 
             modelBuilder.Entity("_2026_Roomify_Backend.Models.Building", b =>
@@ -363,6 +398,24 @@ namespace _2026_Roomify_Backend.Migrations
                     b.Navigation("Room");
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("_2026_Roomify_Backend.Models.BookingStatusHistory", b =>
+                {
+                    b.HasOne("_2026_Roomify_Backend.Models.Booking", "Booking")
+                        .WithMany()
+                        .HasForeignKey("BookingId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("_2026_Roomify_Backend.Models.User", "ChangedBy")
+                        .WithMany()
+                        .HasForeignKey("ChangedByUserId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Booking");
+
+                    b.Navigation("ChangedBy");
                 });
 
             modelBuilder.Entity("_2026_Roomify_Backend.Models.Room", b =>

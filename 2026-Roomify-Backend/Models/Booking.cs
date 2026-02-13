@@ -27,6 +27,9 @@ namespace _2026_Roomify_Backend.Models
         [Column("keperluan")]
         public string Keperluan { get; set; } = string.Empty;
 
+        [Column("status")]
+        public string Status { get; set; } = "Pending";
+
         [Column("building_id")]
         public int BuildingId { get; set; }
 
@@ -38,9 +41,8 @@ namespace _2026_Roomify_Backend.Models
 
         [JsonIgnore]
         public virtual Building? Building { get; set; }
-
+        
         public virtual Room? Room { get; set; }
-
         [JsonIgnore]
         public virtual User? User { get; set; }
     }

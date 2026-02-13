@@ -24,6 +24,12 @@ namespace _2026_Roomify_Backend.Controllers
         [HttpPost("register")]
         public IActionResult Register([FromBody] RegisterDto request)
         {
+            // 1. Validasi input dasar
+            if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
+            {
+                return BadRequest(new { message = "Username dan password wajib diisi." });
+            }
+
             if (_context.Users.Any(u => u.Username == request.Username))
             {
                 return BadRequest(new { message = "Username sudah terdaftar." });
@@ -31,11 +37,14 @@ namespace _2026_Roomify_Backend.Controllers
 
             string passwordHash = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
-            var role = request.Role?.Trim().ToLower();
+            // 2. Proteksi Role (Hanya izinkan 'user' secara default)
+            // Jika ingin membuat admin, kamu bisa buat endpoint khusus atau ubah manual di DB
+            var role = "user";
 
-            if (role != "admin" && role != "user")
+            // Opsi: Hanya izinkan admin jika ada 'secret key' tertentu (opsional)
+            if (request.Role?.Trim().ToLower() == "admin")
             {
-                role = "user";
+                // role = "admin"; // Buka ini hanya jika kamu sedang testing
             }
 
             var newUser = new User
@@ -65,12 +74,14 @@ namespace _2026_Roomify_Backend.Controllers
             var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings["Key"]!));
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);
 
+            // Pastikan user.Role di database isinya tepat "admin" atau "user"
             var claims = new[]
             {
-                new Claim(ClaimTypes.Name, user.Username),
-                new Claim(ClaimTypes.Role, user.Role),
-                new Claim("userId", user.Id.ToString())
-            };
+        new Claim(ClaimTypes.Name, user.Username),
+        new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+        new Claim(ClaimTypes.Role, user.Role), // POIN PENTING: Role dikunci di sini
+        new Claim("userId", user.Id.ToString())
+    };
 
             var token = new JwtSecurityToken(
                 issuer: jwtSettings["Issuer"],
@@ -87,7 +98,7 @@ namespace _2026_Roomify_Backend.Controllers
                 message = "Login berhasil!",
                 token = tokenString,
                 username = user.Username,
-                role = user.Role
+                role = user.Role // Kirim role ke frontend agar frontend tahu harus buka menu apa
             });
         }
     }
