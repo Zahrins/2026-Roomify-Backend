@@ -58,7 +58,7 @@ namespace _2026_Roomify_Backend.Controllers
 
             if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.PasswordHash))
             {
-                return BadRequest(new { message = "Username atau password salah." });
+                return BadRequest(new {message = "Username atau password salah." });
             }
 
             var jwtSettings = _configuration.GetSection("Jwt");
