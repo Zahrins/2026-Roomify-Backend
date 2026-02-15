@@ -1,0 +1,24 @@
+# Visual Studio files
+.vs/
+bin/
+obj/
+*.user
+*.suo
+*.shell_history
+
+# Database & Environment
+.env
+*.db
+*.local
+
+# Node / React files
+node_modules/
+build/
+dist/
+
+# Operating System
+Thumbs.db
+.DS_Store
+
+appsettings.json
+appsettings.Development.json
