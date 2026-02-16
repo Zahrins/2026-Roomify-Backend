@@ -10,24 +10,31 @@ Built using ASP.NET Core Web API and Entity Framework Core.
 ### Authentication
 JWT-based authentication using Authorization Header (Bearer Token).
 
+
 ### Building & Room Management (Admin)  
 Each Room is associated with a Building.
 
+
 ### Room Booking (User)
 Users can create and update their own bookings with date validation.
+
 
 ### Booking Approval (Admin)
 Admin can approve or reject user bookings.  
 All status changes are recorded in booking history.
 
+
 ### Reservation Monitoring
 All bookings created by users are automatically visible to Admin.
+
 
 ### Pagination & Filtering
 Supports pagination and filtering by status, date, building, and room.
 
+
 ### RESTful API
 Implements standard HTTP methods and status codes with role-based access control.
+
 
 ### Database Migration
 Database schema is managed using Entity Framework Core migrations.
@@ -52,8 +59,9 @@ Database schema is managed using Entity Framework Core migrations.
 
 - ASP.NET Core Web API
 - Entity Framework Core
-- SQL Server
+- PostgreSQL
 - Swagger (OpenAPI)
+- JWT Authentication
 
 ---
 
@@ -96,9 +104,10 @@ Database schema is managed using Entity Framework Core migrations.
 ```
 RoomifyBackend
 │
-├── Controllers (including DTO definitions)
+├── Controllers
 ├── Models
 ├── Data
+├── DTOs
 ├── Migrations
 ├── appsettings.json
 └── Program.cs
@@ -208,3 +217,22 @@ Authorization: Bearer {your_token}
 ```
 
 ---
+## Contributing
+
+Contributions are welcome.
+
+1. Fork the repository
+2. Create a new feature branch
+3. Commit changes
+4. Open a pull request
+
+---
+## License
+
+This project is licensed under the MIT License.
+
+---
+## Credits / Author
+
+Developed by Zahrin Savana Khadijah
+Backend Developer – Roomify Project
