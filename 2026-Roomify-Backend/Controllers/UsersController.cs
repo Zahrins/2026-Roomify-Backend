@@ -1,5 +1,6 @@
 ﻿using _2026_Roomify_Backend.Data;
 using _2026_Roomify_Backend.Models;
+using _2026_Roomify_Backend.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -93,16 +94,4 @@ namespace _2026_Roomify_Backend.Controllers
         }
     }
 
-    public class RegisterDto
-    {
-        public string Username { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-        public string? Role { get; set; } 
-    }
-
-    public class LoginDto
-    {
-        public string Username { get; set; } = string.Empty;
-        public string Password { get; set; } = string.Empty;
-    }
 }
